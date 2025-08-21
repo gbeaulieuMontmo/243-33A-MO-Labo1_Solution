@@ -28,6 +28,72 @@ void manipulation2() {
   Serial.println(" cm");
 }
 
+// Manipulation 3: Convertir des degrés Celsius en Fahrenheit et afficher un message 
+// selon la température.
+void manipulation3() {
+  float celsius = 25.0;
+  float fahrenheit = (celsius * 9.0 / 5.0) + 32.0;
+  Serial.print(celsius);
+  Serial.print(" °C = ");
+  Serial.print(fahrenheit);
+  Serial.println(" °F");
+
+  if (celsius <= -15.0) {
+    Serial.println("Il fait froid! N'oublie pas ta tuque!");
+  } else if (celsius > -15.0 && celsius < 5.0) {
+    Serial.println("Il fait froid! Ca prend un manteau d'hiver.");
+  } else if (celsius >= 5.0 && celsius < 15.0) {
+    Serial.println("Il commence à faire chaud.");
+  } else {
+    Serial.println("Il fait chaud aujourd'hui!");
+    Serial.println("Vive le soleil :)");
+  }
+}
+
+// Manipulation 4: Calculer la TVQ, la TPS et le montant total à partir d'un montant
+// avant taxes entré par l'utilisateur via le moniteur série. Afficher les résultats
+// et offrir la possibilité de recommencer.
+void manipulation4() {
+  const float tauxTVQ = 0.09975;
+  const float tauxTPS = 0.05;
+  bool recommencer = true;
+
+  while (recommencer) {
+    Serial.println("Entrez le montant avant taxes: ");
+    while (Serial.available() == 0) {}
+    float montant = Serial.parseFloat();
+    float montantTVQ = montant * tauxTVQ;
+    float montantTPS = montant * tauxTPS;
+    float montantTotal = montant + montantTVQ + montantTPS;
+    Serial.print("Montant avant taxes: ");
+    Serial.println(montant, 2);
+    Serial.print("Montant de la TVQ (9.975%): ");
+    Serial.println(montantTVQ, 2);
+    Serial.print("Montant de la TPS (5%): ");
+    Serial.println(montantTPS, 2);
+    Serial.print("Montant total (avant taxes + TVQ + TPS): ");
+    Serial.println(montantTotal, 2);
+    Serial.println("--------------------------------------------------");
+
+    Serial.println("Voulez-vous recommencer? (o/n)");
+    recommencer = false;
+    while (true) {
+      while (Serial.available() == 0) {}
+      char reponse = Serial.read();
+      while (Serial.available()) Serial.read(); // Nettoyer le buffer
+      if (reponse == 'o' || reponse == 'O') {
+        recommencer = true;
+        break;
+      } else if (reponse == 'n' || reponse == 'N') {
+        Serial.println("Fin du programme.");
+        break;
+      } else {
+        Serial.println("Réponse invalide. Veuillez entrer 'o' pour oui ou 'n' pour non.");
+      }
+    }
+  }
+}
+
 // Configuration du uC
 void setup() {
   Serial.begin(9600);
@@ -37,5 +103,7 @@ void setup() {
 void loop() {
   manipulation1();
   // manipulation2();
+  // manipulation3();
+  // manipulation4();
   delay(1000);
 }
