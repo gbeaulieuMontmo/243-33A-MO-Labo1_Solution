@@ -13,15 +13,29 @@
 
 #include <Arduino.h>
 
+// Manipulation 1: Afficher "Bonjour le monde!" dans le moniteur série.
 void manipulation1() {
   Serial.println("Bonjour le monde!");  
 }
 
+// Manipulation 2: Convertir des pouces en centimètres et afficher le résultat.
+void manipulation2() {
+  float pouces = 12.0;
+  float cm = pouces * 2.54;
+  Serial.print(pouces);
+  Serial.print(" pouces = ");
+  Serial.print(cm);
+  Serial.println(" cm");
+}
+
+// Configuration du uC
 void setup() {
   Serial.begin(9600);
 }
 
+// Boucle principale
 void loop() {
   manipulation1();
+  // manipulation2();
   delay(1000);
 }
