@@ -94,6 +94,39 @@ void manipulation4() {
   }
 }
 
+void manipulation5() {
+  int min, max;
+  Serial.println("Entrez la valeur minimale: ");
+  while (Serial.available() == 0) {}  
+  min = Serial.parseInt();
+  Serial.println("Entrez la valeur maximale: ");
+  while (Serial.available() == 0) {}
+  max = Serial.parseInt();
+  Serial.print("Les nombres pairs entre ");
+  Serial.print(min);
+  Serial.print(" et ");
+  Serial.print(max);
+  Serial.println(" sont: ");
+  for(int i = min; i <= max; i++) {
+    if(i % 2 == 0) {
+      Serial.print(i);
+      Serial.print(" ");
+    } 
+  }
+  Serial.println();
+  Serial.print("Les nombres impairs entre ");
+  Serial.print(min);
+  Serial.print(" et ");
+  Serial.print(max);
+  Serial.println(" sont: ");
+  for(int i = min; i <= max; i++) {
+    if(i % 2 != 0) {
+      Serial.print(i);
+      Serial.print(" ");
+    } 
+  }
+}
+
 // Configuration du uC
 void setup() {
   Serial.begin(9600);
@@ -101,9 +134,9 @@ void setup() {
 
 // Boucle principale
 void loop() {
-  manipulation1();
+  //manipulation1();
   // manipulation2();
   // manipulation3();
-  // manipulation4();
+   manipulation4();
   delay(1000);
 }
