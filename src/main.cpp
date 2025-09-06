@@ -9,6 +9,8 @@
 // d'appeler la fonction dans le loop() pour exécuter l'exercice.
 //
 // Version: 1.0
+// Pour obtenir cet exemple de code, voir le dépôt GitHub suivant :
+// https://github.com/gbeaulieuMontmo/243-33A-MO-Labo1_Solution.git
 /**************************************************************/
 
 #include <Arduino.h>
@@ -94,6 +96,7 @@ void manipulation4() {
   }
 }
 
+// Manipulation 5: Afficher les nombres pairs et impairs entre deux valeurs entrées par l'utilisateur.
 void manipulation5() {
   int min, max;
   Serial.println("Entrez la valeur minimale: ");
@@ -134,9 +137,13 @@ void setup() {
 
 // Boucle principale
 void loop() {
-  //manipulation1();
+  // manipulation1();
   // manipulation2();
   // manipulation3();
-   manipulation4();
+  // manipulation4();
+   manipulation5();
+  // La manipulation 6 et 7 n'est pas incluse dans cette solution car elles
+  // donnerait les réponses pour le laboratoire 2. Voir la solution du labo 2 
+  // pour les solutions des manipulation 6 et 7.
   delay(1000);
 }
